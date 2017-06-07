@@ -19,11 +19,16 @@ class App extends React.Component {
     this.setState({ enteredText: event.target.value });
   }
 
+  createMarkup() {
+    const marked = require('marked');
+    return ({ __html: marked(this.state.enteredText) });
+  }
+
   render() {
     return (
       <div>
-        <textarea id="input" value={this.state.enteredText} onChange={this.handleInput}/>
-        <textarea id="output"/>
+        <textarea id="input" value={this.state.enteredText} onChange={this.handleInput} />
+        <span dangerouslySetInnerHTML={this.createMarkup()} id="output" />
       </div>
     );
   }
