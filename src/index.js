@@ -5,14 +5,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+function InputField() {
+  return (
+    <textarea />
+  );
+}
+
+function OutputField() {
+  return (
+    <h2>Hello</h2>
+  );
+}
+
 class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      enteredText: '',
+      markedText: '',
+    };
   }
 
   render() {
     return (
-      <h1>Hello World!</h1>
+      <div>
+        <InputField />
+        <OutputField />
+      </div>
     );
   }
 }
