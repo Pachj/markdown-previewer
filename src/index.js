@@ -5,32 +5,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function InputField() {
-  return (
-    <textarea />
-  );
-}
-
-function OutputField() {
-  return (
-    <h2>Hello</h2>
-  );
-}
-
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       enteredText: '',
-      markedText: '',
     };
+
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput(event) {
+    this.setState({ enteredText: event.target.value });
   }
 
   render() {
     return (
       <div>
-        <InputField />
-        <OutputField />
+        <textarea id="input" value={this.state.enteredText} onChange={this.handleInput}/>
+        <textarea id="output"/>
       </div>
     );
   }
